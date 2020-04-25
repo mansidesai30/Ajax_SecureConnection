@@ -1,0 +1,42 @@
+<?php
+
+session_start();
+if(!md5($_POST["token"])==$_SESSION['token'])
+{
+	
+	echo"Please Dont Try It";
+	exit(0);
+
+}	
+?>
+
+<?php
+if(!isset($_POST["pageid"]))
+{
+	echo"Error Please check Page";
+	exit(0);
+}
+
+switch($_POST["pageid"])
+{
+	case "abt":
+		//require_once 'about.php';
+		echo"In about";
+		//print_r($_POST);
+		break;
+	
+	case "cat":
+		//require_once 'category.php';
+		echo"In cat";
+		break;
+	
+	default:
+		echo "Invalid page or page may be moved or deleted or link is broken!";
+		session_unset();
+		session_destroy();
+		echo"please Check after some time";
+
+		break;	
+	
+}
+?>
